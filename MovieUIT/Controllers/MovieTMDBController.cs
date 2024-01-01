@@ -24,15 +24,30 @@ namespace MovieUIT.Controllers
         }
 
         // GET api/<MovieTMDBController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{_id}")]
         public ActionResult<MovieTMDB> Get(string _id)
         {
             //return movieTMDBService.Get(_id);
 
-            var movieTMDB = movieTMDBService.Get(_id);
+            var movieTMDB = movieTMDBService.GetById(_id);
             if (movieTMDB == null)
             {
                 return NotFound($"Movie with Id = {_id} not found");
+            }
+            return movieTMDB;
+        }
+
+        // GET api/<MovieTMDBController>/5
+        // GET api/<MovieTMDBController>/5
+        [HttpGet("tmdb/{id}")]
+        public ActionResult<MovieTMDB> Get(int id)
+        {
+            //return movieTMDBService.Get(_id);
+
+            var movieTMDB = movieTMDBService.GetByIdMovie(id);
+            if (movieTMDB == null)
+            {
+                return NotFound($"Movie with Id = {id} not found");
             }
             return movieTMDB;
         }
@@ -49,7 +64,7 @@ namespace MovieUIT.Controllers
         [HttpPut("{id}")]
         public ActionResult<MovieTMDB> Put(string id, [FromBody] MovieTMDB movieTMDB)
         {
-            var existingMovieTMDB = movieTMDBService.Get(id);
+            var existingMovieTMDB = movieTMDBService.GetById(id);
             if (existingMovieTMDB == null)
             {
                 return NotFound($"MovieTMDB with id = {id} not found");
@@ -62,7 +77,7 @@ namespace MovieUIT.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(string id)
         {
-            var movieTMDB = movieTMDBService.Get(id);
+            var movieTMDB = movieTMDBService.GetById(id);
             if(movieTMDB == null)
             {
                 return NotFound($"MovieTMDB with id = {id} not found");
