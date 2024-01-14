@@ -19,9 +19,9 @@ namespace MovieUIT.Service
             return movieTMDB;
         }
 
-        public List<MovieTMDB> Get()
+        public List<MovieTMDB> Get(int page)
         {
-            return _movieTMDB.Find(movieTMDB => true).ToList();
+            return _movieTMDB.Find(movieTMDB => true).Limit(page).ToList();
         }
 
         public MovieTMDB GetById(String id)

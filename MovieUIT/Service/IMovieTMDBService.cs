@@ -4,7 +4,7 @@ namespace MovieUIT.Service
 {
     public interface IMovieTMDBService
     {
-        List<MovieTMDB> Get();
+        List<MovieTMDB> Get(int index);
         MovieTMDB GetById(string _id);
         MovieTMDB GetByIdMovie(int id);
         MovieTMDB Create(MovieTMDB movieTMDB);

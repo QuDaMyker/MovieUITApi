@@ -17,10 +17,10 @@ namespace MovieUIT.Controllers
             this.movieTMDBService = movieTMDBService;
         }
         // GET: api/<MovieTMDBController>
-        [HttpGet]
-        public ActionResult<List<MovieTMDB>> Get()
+        [HttpGet("all/{index}")]
+        public ActionResult<List<MovieTMDB>> Get(int index)
         {
-            return movieTMDBService.Get();
+            return movieTMDBService.Get(index);
         }
 
         // GET api/<MovieTMDBController>/5
@@ -40,7 +40,7 @@ namespace MovieUIT.Controllers
         // GET api/<MovieTMDBController>/5
         // GET api/<MovieTMDBController>/5
         [HttpGet("tmdb/{id}")]
-        public ActionResult<MovieTMDB> Get(int id)
+        public ActionResult<MovieTMDB> GetMovie(int id)
         {
             //return movieTMDBService.Get(_id);
 
